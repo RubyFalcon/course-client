@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import initialData from "./data.js";
+import { Header, Modules, UniversityCourseStudent } from "./components";
 
 function App() {
+  const [data, setData] = React.useState(initialData);
+  function addModuleData(value) {
+    setData((prev) => {
+      return {
+        ...prev,
+        //non-mutating operator
+        moduleData: [...prev.moduleData, value],
+      };
+    });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onAdd={addModuleData} />
+      <UniversityCourseStudent studentData={data.studentData} />
+      <Modules data={data.moduleData} />
     </div>
   );
 }
