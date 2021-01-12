@@ -1,6 +1,7 @@
 import React from "react";
 import initialData from "./data.js";
 import { Header, Modules, UniversityCourseStudent } from "./components";
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
   const [data, setData] = React.useState(initialData);
@@ -15,12 +16,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header onAdd={addModuleData} />
-      <UniversityCourseStudent studentData={data.studentData} />
-      <Modules data={data.moduleData} />
-    </div>
+    <Router>
+      <div className="App">
+        <Header onAdd={addModuleData} />
+        <Switch>
+          <Route path="/studentdata">
+          <UniversityCourseStudent studentData={data.studentData} /> 
+          </Route>
+
+          
+        </Switch>  
+        <Modules data={data.moduleData} />            
+      </div>
+    </Router>
+   
   );
 }
-
+//
 export default App;

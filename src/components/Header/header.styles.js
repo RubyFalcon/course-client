@@ -9,4 +9,7 @@ export const HeaderSection = styled(Stack)`
   box-shadow: 2px 0px 18px -2px rgba(0, 0, 0, 0.14);
 `;
 
-export const Group = styled.div``;
+export const Group = styled.div`
+display: grid;
+grid-template-columns: 1fr min-content min-content;
+`;

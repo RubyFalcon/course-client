@@ -16,6 +16,7 @@ const Header = ({ onAdd }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   //we want to change the light and darkmode values
   return (
+    
     <HeaderSection as="header">
       <Container maxW="1280px">
         <Flex
@@ -33,7 +34,11 @@ const Header = ({ onAdd }) => {
               Tupay's Module Website
             </Heading>
           </Link>
+       
           <Group>
+          <Link>
+            <Heading as='h3' fontSize='18px' lineHeight="35px" paddingLeft='10px' paddingRight="15px">Sign in</Heading>
+            </Link>
             <UniversityCourseModulePanel
               isOpen={isOpen}
               onClose={onClose}
@@ -44,6 +49,7 @@ const Header = ({ onAdd }) => {
               colorScheme="teal"
               onClick={onOpen}
             />
+            
             <DarkModeSwitch />
           </Group>
         </Flex>
