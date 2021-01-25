@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   FormControl,
   FormLabel,
@@ -15,14 +15,13 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { Form } from "../ModulePanel/ModulePanel.styles";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const initialState = {
   email: "",
-  password: "" 
+  password: "",
 };
-  
+
 const Signin = ({ onClose, isOpen, signIn }) => {
   const success = useToast();
   const secondField = React.useRef();
@@ -40,25 +39,14 @@ const Signin = ({ onClose, isOpen, signIn }) => {
     });
   }
 
-
   function handleSubmit(event) {
     event.preventDefault();
-
+    console.log("user signed in with data:", user);
     signIn(user);
     setUser(initialState);
 
     onClose();
-    success({
-      title: "Signed in.",
-      description: "You have successfully logged in",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-    });
   }
-  
-
-
 
   return (
     <Drawer
@@ -70,9 +58,7 @@ const Signin = ({ onClose, isOpen, signIn }) => {
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">
-            Sign In
-          </DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">Sign In</DrawerHeader>
 
           <DrawerBody>
             <Stack spacing="24px">
@@ -80,7 +66,7 @@ const Signin = ({ onClose, isOpen, signIn }) => {
                 <FormControl>
                   <FormLabel htmlFor="email">Email:</FormLabel>
                   <Input
-                    value={user.Signin}
+                    value={user.email}
                     onChange={eventChange}
                     id="email"
                     type="text"
@@ -90,11 +76,11 @@ const Signin = ({ onClose, isOpen, signIn }) => {
                   <FormLabel htmlFor="password">Password:</FormLabel>
                   <Input
                     onChange={eventChange}
-                    value={user.Signin}
+                    value={user.password}
                     id="password"
                     type="text"
                   />
-                </FormControl> 
+                </FormControl>
               </Form>
             </Stack>
           </DrawerBody>
@@ -111,8 +97,9 @@ const Signin = ({ onClose, isOpen, signIn }) => {
             >
               Submit
             </Button>
-            <Button colorScheme="red" as={Link} to="/signup">Create Account</Button>
-            
+            <Button colorScheme="red" as={Link} to="/signup">
+              Create Account
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </DrawerOverlay>

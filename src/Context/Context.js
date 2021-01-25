@@ -1,5 +1,8 @@
 import { createContext, useReducer, useContext, useMemo } from "react";
 
+//todo: when u log out its not updating the dom, it should update, to fix this
+//todo: add module data to context
+//todo:
 const initialUserState = {
   userData: {},
 };

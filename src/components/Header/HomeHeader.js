@@ -6,6 +6,7 @@ import {
   IconButton,
   useColorModeValue,
   useDisclosure,
+  color,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "./DarkModeSwitch";
@@ -17,7 +18,7 @@ import useSignIn from "../../Hooks/useSignIn";
 
 const HomeHeader = ({ onAdd, onSignIn }) => {
   const { userData } = useGlobalContext();
-  const { sigin, logout } = useSignIn();
+  const { signin, logout } = useSignIn();
 
   const {
     isOpen: moduleIsOpen,
@@ -51,9 +52,18 @@ const HomeHeader = ({ onAdd, onSignIn }) => {
           </Link>
 
           <Group>
-            <Heading as="h3" fontSize="18px" paddingRight="5px">
-              About
-            </Heading>
+            <Link href="/about">
+              <Heading
+                _hover="color: cyan;"
+                color="darkcyan"
+                as="h3"
+                fontSize="18px"
+                paddingRight="5px"
+              >
+                About
+              </Heading>
+            </Link>
+
             {userData.First_Name ? (
               <>
                 <Heading
@@ -75,9 +85,10 @@ const HomeHeader = ({ onAdd, onSignIn }) => {
                 <Signin
                   isOpen={signInIsOpen}
                   onClose={signInOnClose}
-                  signIn={sigin}
+                  signIn={signin}
                 />
                 <Heading
+                  color="darkcyan"
                   onClick={signInOnOpen}
                   as="h3"
                   fontSize="18px"

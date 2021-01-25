@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, SimpleGrid, Stack } from "@chakra-ui/react";
+import { Container, SimpleGrid, Stack, Heading } from "@chakra-ui/react";
 import Card from "../Card";
 import axios from "axios";
 import { useGlobalContext } from "../../Context/Context";
@@ -29,7 +29,14 @@ const Modules = () => {
             ))}
           </SimpleGrid>
         ) : (
-          ""
+          <Stack>
+            <Container maxW="1280px">
+              <Heading paddingTop="40px" fontSize="28px" textAlign="center">
+                Hello, I'm sorry but you are not allowed to access this
+                information, please login to view{" "}
+              </Heading>
+            </Container>
+          </Stack>
         )}
       </Container>
     </Stack>

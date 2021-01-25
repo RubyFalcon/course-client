@@ -7,22 +7,41 @@ import { useToast } from "@chakra-ui/react";
 export default function useSignIn() {
   const { userData, setUserData } = useGlobalContext();
   const success = useToast();
+  const failure = useToast();
   const history = useHistory();
   const mounted = React.useRef(false);
 
   const postUser = async (userCredentials) => {
+    console.log("starting to send data...");
+    console.log("in hook", userCredentials);
     try {
-      //console.log('post user has been called')
+      console.log("post user has been called");
       let res = await axios.post(
         "http://localhost:5000/user/login",
         userCredentials
       );
+
       setUserData(res.data);
+      console.log(res.data);
       history.push("/modules");
+      success({
+        title: "Signed in.",
+        description: "You have successfully logged in",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
 
       //window.localStorage.setItem("User_Data", JSON.stringify(res.data));
     } catch (err) {
-      console.error(err);
+      console.log("something went wrong:", err.message);
+      failure({
+        title: "Signed in failed",
+        description: "Something went wrong",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
 
@@ -57,5 +76,5 @@ export default function useSignIn() {
     }
   }, [userData]);
 
-  return { sigin: postUser, logout: onLogout };
+  return { signin: postUser, logout: onLogout };
 }
