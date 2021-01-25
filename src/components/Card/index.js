@@ -1,26 +1,39 @@
 import {
-  Box,
   useColorModeValue,
-  ListItem,
   UnorderedList,
+  Button
 } from "@chakra-ui/react";
+import { InfoIcon} from '@chakra-ui/icons';
+import {CardContainer, ButtonWrap, StyledList} from "./card.styles";
+import { Link } from "react-router-dom";
 
-const Card = ({ moduleName, moduleCode, startDate, endDate, courseName }) => {
+const Card = ({ Name, Code, Start_Date, End_Date, Course_Name }) => {
   return (
-    <Box
-      bg={useColorModeValue("gray.100", "#4A5568")}
+    <CardContainer
+      bg={useColorModeValue("gray.50", "gray.700")}
       borderRadius="5px"
-      px={10}
-      py={5}
+     
     >
       <UnorderedList listStyleType="none">
-        <ListItem>Module Name: {moduleName}</ListItem>
-        <ListItem>Module Code: {moduleCode}</ListItem>
-        <ListItem>Start Date: {startDate}</ListItem>
-        <ListItem>End Date: {endDate}</ListItem>
-        <ListItem>Course Name: {courseName}</ListItem>
+        <StyledList>Module Name: {Name}</StyledList>
+        <StyledList>Module Code: {Code}</StyledList>
+        <StyledList>Start Date: {Start_Date}</StyledList>
+        <StyledList>End Date: {End_Date}</StyledList>
+        <StyledList>Course Name: {Course_Name}</StyledList>
       </UnorderedList>
-    </Box>
+      <ButtonWrap>
+      <Button
+        size="sm"
+        //onClick={}
+        leftIcon={<InfoIcon />}
+        as={Link}
+        to={`/quote/${Code}`}
+      >
+        Details
+      </Button>
+      </ButtonWrap>
+      
+    </CardContainer>
   );
 };
 

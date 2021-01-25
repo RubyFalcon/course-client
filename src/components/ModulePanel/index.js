@@ -14,17 +14,17 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/react";
-import { Form } from "./UniversityCourseModulePanel.styles";
+import { Form } from "./ModulePanel.styles";
 
 const initialState = {
-  moduleName: "",
-  moduleCode: "",
-  startDate: "",
-  endDate: "",
-  courseName: "",
+  Name: "",
+  Code: "",
+  Start_Date: "",
+  End_Date: "",
+  Course_Name: "",
 };
 
-const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
+const ModulePanel = ({ onClose, isOpen, add }) => {
   const firstField = React.useRef();
   const success = useToast();
 
@@ -39,12 +39,6 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
       };
     });
   }
-  // function alertUser(event) {
-  //   event.preventDefault();
-
-  //   window.alert(JSON.stringify(form, null, 2));
-  //   setForm(initialState);
-  // }
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -82,9 +76,9 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
                 <FormControl>
                   <FormLabel htmlFor="moduleName">Module name:</FormLabel>
                   <Input
-                    value={form.moduleName}
+                    value={form.Name}
                     onChange={eventChange}
-                    id="moduleName"
+                    id="Name"
                     type="text"
                   />
                 </FormControl>
@@ -92,8 +86,8 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
                   <FormLabel htmlFor="moduleCode">Module Code:</FormLabel>
                   <Input
                     onChange={eventChange}
-                    value={form.moduleCode}
-                    id="moduleCode"
+                    value={form.Code}
+                    id="Code"
                     type="text"
                   />
                 </FormControl>
@@ -101,8 +95,8 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
                   <FormLabel htmlFor="startDate">Start Date:</FormLabel>
                   <Input
                     onChange={eventChange}
-                    value={form.startDate}
-                    id="startDate"
+                    value={form.Start_Date}
+                    id="Start_Date"
                     type="text"
                   />
                 </FormControl>
@@ -110,8 +104,8 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
                   <FormLabel htmlFor="endDate">End Date:</FormLabel>
                   <Input
                     onChange={eventChange}
-                    value={form.endDate}
-                    id="endDate"
+                    value={form.End_Date}
+                    id="End_Date"
                     type="text"
                   />
                 </FormControl>
@@ -119,8 +113,8 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
                   <FormLabel htmlFor="courseName">Course Name:</FormLabel>
                   <Input
                     onChange={eventChange}
-                    value={form.courseName}
-                    id="courseName"
+                    value={form.Course_Name}
+                    id="Course_Name"
                     type="text"
                   />
                 </FormControl>
@@ -147,4 +141,4 @@ const UniversityCourseModulePanel = ({ onClose, isOpen, add }) => {
   );
 };
 
-export default UniversityCourseModulePanel;
+export default ModulePanel;

@@ -10,6 +10,6 @@ export const HeaderSection = styled(Stack)`
 `;
 
 export const Group = styled.div`
-display: grid;
-grid-template-columns: 1fr min-content min-content;
+display: flex;
+align-items: center;
 `;

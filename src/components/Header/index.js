@@ -7,13 +7,17 @@ import {
   IconButton,
   useDisclosure,
 } from "@chakra-ui/react";
+import {Link as RouterLink} from 'react-router-dom';
 import { AddIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "./DarkModeSwitch";
 import { HeaderSection, Group } from "./header.styles";
-import UniversityCourseModulePanel from "../UniversityCourseModulePanel";
+import ModulePanel from "../ModulePanel";
+import Signin from "../signin";
 
-const Header = ({ onAdd }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+const Header = ({ onAdd,onSignIn }) => {
+  const { isOpen: moduleIsOpen, onOpen: moduleOnOpen, onClose: moduleOnClose } = useDisclosure();
+  const { isOpen: signInIsOpen, onOpen: signInOnOpen, onClose: signInOnClose } = useDisclosure();
   //we want to change the light and darkmode values
   return (
     
@@ -35,19 +39,17 @@ const Header = ({ onAdd }) => {
             </Heading>
           </Link>
        
-          <Group>
-          <Link>
-            <Heading as='h3' fontSize='18px' lineHeight="35px" paddingLeft='10px' paddingRight="15px">Sign in</Heading>
-            </Link>
-            <UniversityCourseModulePanel
-              isOpen={isOpen}
-              onClose={onClose}
+          <Group>  
+            <ModulePanel
+              isOpen={moduleIsOpen}
+              onClose={moduleOnClose}
               add={onAdd}
             />
+            {/*  */}
             <IconButton
               icon={<AddIcon />}
               colorScheme="teal"
-              onClick={onOpen}
+              onClick={moduleOnOpen}
             />
             
             <DarkModeSwitch />
