@@ -5,12 +5,15 @@ import { createContext, useReducer, useContext, useMemo } from "react";
 //todo:
 const initialUserState = {
   userData: {},
+  moduleData: {},
 };
 
 const userReducer = (state, action) => {
   switch (action.type) {
     case "ADD_USER_INFO":
       return { ...state, userData: action.user };
+    case "ADD_MODULE_INFO":
+      return { ...state, moduleData: action.module };
     default:
       return state;
   }
@@ -19,12 +22,25 @@ const userReducer = (state, action) => {
 export const GlobalContext = createContext({});
 
 const GlobalContextProvider = (props) => {
+  //reducers
   const [user, dispatchUser] = useReducer(userReducer, initialUserState);
 
+  //setters
   const setUserData = (data) =>
     dispatchUser({ type: "ADD_USER_INFO", user: data });
 
-  const providedValue = useMemo(() => ({ ...user, setUserData }), [user]);
+  const setModuleData = (data) => {
+    dispatchUser({ type: "ADD_MODULE_INFO", module: data });
+  };
+
+  const providedValue = useMemo(
+    () => ({ ...user, setUserData, setModuleData }),
+    [user]
+  );
+  // const providedModuleValue = useMemo(() => ({ ...module, setModuleData }), [
+  //   module,
+  // ]);
+  // const endValue = { ...providedValue, ...providedModuleValue };
 
   return <GlobalContext.Provider value={providedValue} {...props} />;
 };

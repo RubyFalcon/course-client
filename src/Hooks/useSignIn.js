@@ -12,8 +12,8 @@ export default function useSignIn() {
   const mounted = React.useRef(false);
 
   const postUser = async (userCredentials) => {
-    console.log("starting to send data...");
-    console.log("in hook", userCredentials);
+    //console.log("starting to send data...");
+    //console.log("in hook", userCredentials);
     try {
       console.log("post user has been called");
       let res = await axios.post(

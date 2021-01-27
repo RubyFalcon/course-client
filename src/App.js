@@ -7,7 +7,8 @@ import axios from "axios";
 import Home from "./pages/Home";
 import HomeHeader from "./components/Header/HomeHeader";
 import SignUp from "./pages/SignUp.js";
-import userData from "./data";
+import Module from "./pages/Module";
+
 import UserTable from "./components/UniversityCourseStudent/index.js";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/signup">
           <SignUp />
         </Route>
+        <Route path="/modules/:moduleCode" exact render={() => <Module />} />
       </Switch>
     </Router>
   );
