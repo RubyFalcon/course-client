@@ -12,7 +12,6 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Stack,
-  useToast,
 } from "@chakra-ui/react";
 import { Form } from "../ModulePanel/ModulePanel.styles";
 import { Link } from "react-router-dom";
@@ -23,7 +22,6 @@ const initialState = {
 };
 
 const Signin = ({ onClose, isOpen, signIn }) => {
-  const success = useToast();
   const secondField = React.useRef();
 
   const [user, setUser] = React.useState(initialState);
@@ -78,7 +76,7 @@ const Signin = ({ onClose, isOpen, signIn }) => {
                     onChange={eventChange}
                     value={user.password}
                     id="password"
-                    type="text"
+                    type="password"
                   />
                 </FormControl>
               </Form>

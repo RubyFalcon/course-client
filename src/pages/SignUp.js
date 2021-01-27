@@ -80,7 +80,7 @@ const SignUp = () => {
           <Heading paddingLeft="10px">
             Submit Your details in the Form Below
           </Heading>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <FormControl>
               <FormLabel htmlFor="email">Email:</FormLabel>
               <Input
@@ -132,14 +132,14 @@ const SignUp = () => {
                 onChange={eventChange}
                 value={createduser.hashed_password}
                 id="hashed_password"
-                type="text"
+                type="password"
               />
             </FormControl>
             <Button
               colorScheme="blue"
               aria-label="Submit form data"
               type="submit"
-              onClick={handleSubmit}
+              //onClick={handleSubmit}
             >
               Submit
             </Button>

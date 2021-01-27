@@ -22,6 +22,7 @@ const useModule = (moduleCode) => {
 
   React.useEffect(() => {
     getModules();
+    console.log(moduleData);
   }, [moduleCode]);
 
   return moduleData;

@@ -1,5 +1,4 @@
 import React from "react";
-import { useToast } from "@chakra-ui/react";
 import { HomeHeader, Modules, UserTable } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
