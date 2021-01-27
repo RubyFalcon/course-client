@@ -1,4 +1,4 @@
-export { default as Header } from "./Header";
+export { default as HomeHeader } from "./Header/HomeHeader";
 export { default as ModulePanel } from "./ModulePanel";
-export { default as UniversityCourseStudent } from "./UniversityCourseStudent";
+export { default as UserTable } from "./UserTable";
 export { default as Modules } from "./Modules";

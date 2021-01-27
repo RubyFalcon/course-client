@@ -1,15 +1,12 @@
 import React from "react";
-import initialData from "./data.js";
 import { useToast } from "@chakra-ui/react";
-import { Header, Modules, UniversityCourseStudent } from "./components";
+import { HomeHeader, Modules, UserTable } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-import HomeHeader from "./components/Header/HomeHeader";
+
 import SignUp from "./pages/SignUp.js";
 import Module from "./pages/Module";
-
-import UserTable from "./components/UniversityCourseStudent/index.js";
 
 function App() {
   async function addModuleData(value) {
@@ -27,7 +24,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/studentdata">
+        <Route exact path="/user-data">
           <UserTable />
         </Route>
         <Route exact path="/modules">
