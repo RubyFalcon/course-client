@@ -1,13 +1,22 @@
+/*Property of Tupay Saldana Felkin.
+  Student id:21406213
+
+*/
+
+//Imports:
 import React from "react";
 import { HomeHeader, Modules, UserTable } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-
 import SignUp from "./pages/SignUp.js";
 import Module from "./pages/Module";
 
 function App() {
+  /**
+   *  an asynchronous axios post request which send the data to the Module-API
+   * @param {*} value passed from onAdd props which leads to the Header
+   */
   async function addModuleData(value) {
     try {
       console.log("sending data", value);

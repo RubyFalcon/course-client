@@ -1,13 +1,19 @@
 import { createContext, useReducer, useContext, useMemo } from "react";
 
-//todo: when u log out its not updating the dom, it should update, to fix this
-//todo: add module data to context
-//todo:
+/**
+ * @description initial states
+ * @property {object} userData holds the user state
+ */
 const initialUserState = {
   userData: {},
   moduleData: {},
 };
 
+/**
+ *
+ * @param {*} state the data to be passed down
+ * @param {*} action the action holds a key of type and then passes down previous state with the new data added to the state
+ */
 const userReducer = (state, action) => {
   switch (action.type) {
     case "ADD_USER_INFO":
@@ -25,10 +31,17 @@ const GlobalContextProvider = (props) => {
   //reducers
   const [user, dispatchUser] = useReducer(userReducer, initialUserState);
 
-  //setters
+  /**
+   * dispatches User with data passed in to the user
+   * @param {object} data  the data passed into the function
+   */
   const setUserData = (data) =>
     dispatchUser({ type: "ADD_USER_INFO", user: data });
 
+  /**
+   * dispatches user with data passed in to the module
+   * @param {object} data  the data passed into the function
+   */
   const setModuleData = (data) => {
     dispatchUser({ type: "ADD_MODULE_INFO", module: data });
   };
@@ -37,14 +50,13 @@ const GlobalContextProvider = (props) => {
     () => ({ ...user, setUserData, setModuleData }),
     [user]
   );
-  // const providedModuleValue = useMemo(() => ({ ...module, setModuleData }), [
-  //   module,
-  // ]);
-  // const endValue = { ...providedValue, ...providedModuleValue };
 
   return <GlobalContext.Provider value={providedValue} {...props} />;
 };
 
+/**
+ * Global context allows data to be passed down to indivual components/pages instead of being passed down through props, and uses createcontext from react
+ */
 export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
 
