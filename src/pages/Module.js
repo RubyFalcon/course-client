@@ -5,6 +5,9 @@ import { Container, Box, Heading } from "@chakra-ui/react";
 import { CourseName, TextData } from "./Module.styles";
 import { useGlobalContext } from "../Context/Context";
 
+/**
+ * a Module page displaying extra details about a module. Will only display if a user is logged in
+ */
 const Module = () => {
   const { userData } = useGlobalContext();
   const { moduleCode } = useParams();

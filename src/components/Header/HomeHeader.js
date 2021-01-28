@@ -6,7 +6,6 @@ import {
   IconButton,
   useColorModeValue,
   useDisclosure,
-  color,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "./DarkModeSwitch";
@@ -16,6 +15,10 @@ import Signin from "../signin";
 import { useGlobalContext } from "../../Context/Context";
 import useSignIn from "../../Hooks/useSignIn";
 
+/**
+ * The header displayed at the top of the screen, will display login only when a user isnt logged in
+ * @param {*} props takes in onAdd as props
+ */
 const HomeHeader = ({ onAdd, onSignIn }) => {
   const { userData } = useGlobalContext();
   const { signin, logout } = useSignIn();

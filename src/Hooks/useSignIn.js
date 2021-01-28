@@ -5,15 +5,29 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
 export default function useSignIn() {
+  /**
+   * passed from context
+   */
   const { userData, setUserData } = useGlobalContext();
+  /**
+   * toasts are styled alerts that popup
+   */
   const success = useToast();
   const failure = useToast();
+  /**
+   * allows for redirection
+   */
   const history = useHistory();
+  /**
+   * sorta like a componentdidmount , lets  us check if
+   */
   const mounted = React.useRef(false);
 
+  /**
+   * asynchronous post request to API for the user
+   * @param {*} userCredentials an object of user data to be checked on the API
+   */
   const postUser = async (userCredentials) => {
-    //console.log("starting to send data...");
-    //console.log("in hook", userCredentials);
     try {
       console.log("post user has been called");
       let res = await axios.post(
@@ -22,7 +36,9 @@ export default function useSignIn() {
       );
 
       setUserData(res.data);
-      console.log(res.data);
+      /**
+       * will send use to /modules if and only if we login
+       */
       history.push("/modules");
       success({
         title: "Signed in.",
@@ -31,8 +47,6 @@ export default function useSignIn() {
         duration: 2000,
         isClosable: true,
       });
-
-      //window.localStorage.setItem("User_Data", JSON.stringify(res.data));
     } catch (err) {
       console.log("something went wrong:", err.message);
       failure({
@@ -45,6 +59,9 @@ export default function useSignIn() {
     }
   };
 
+  /**
+   * will remove the user data from local storage
+   */
   const onLogout = () => {
     window.localStorage.removeItem("User_Data");
 
@@ -58,7 +75,10 @@ export default function useSignIn() {
 
     history.push("/");
   };
-
+  /**
+   * this use will run whenever the page renders and will get theUSer_Data from localstorage and
+   * set the user data to that User_Data if it exists
+   */
   useEffect(() => {
     const userFromStorage = localStorage.getItem("User_Data");
 
@@ -67,6 +87,10 @@ export default function useSignIn() {
     }
   }, []);
 
+  /**
+   * this useEffect will run whenever the userData Changes, if mounted current  is true then we will set user_data into local storage,
+   * otherwise it will set the mounted current to true, so next time the userData changes it will set thedata to userData.
+   */
   React.useEffect(() => {
     if (mounted.current) {
       localStorage.setItem("User_Data", JSON.stringify(userData));

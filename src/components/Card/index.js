@@ -3,6 +3,10 @@ import { InfoIcon } from "@chakra-ui/icons";
 import { CardContainer, ButtonWrap, StyledList } from "./card.styles";
 import { Link } from "react-router-dom";
 
+/**
+ * this Card is a Box wrapped around a unordered list, displaying our modules on page
+ * @param {*} props takes is props and displays them on page
+ */
 const Card = ({ Name, Code, Start_Date, End_Date, Course_Name }) => {
   return (
     <CardContainer

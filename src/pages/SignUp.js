@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "./SignUp.styles";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const initialState = {
@@ -139,7 +138,6 @@ const SignUp = () => {
               colorScheme="blue"
               aria-label="Submit form data"
               type="submit"
-              //onClick={handleSubmit}
             >
               Submit
             </Button>

@@ -3,8 +3,9 @@ import { useGlobalContext } from "../Context/Context";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
-import React from "react";
-
+/**
+ * useNewUser will post a new user to our API ad and set it to our global State
+ */
 export default function useNewUser() {
   const { newuserData, setnewUserData } = useGlobalContext();
   const success = useToast();
@@ -15,8 +16,6 @@ export default function useNewUser() {
         userCredentials
       );
       setnewUserData(res.data);
-
-      //window.localStorage.setItem("User_Data", JSON.stringify(res.data));
     } catch (err) {
       console.error(err);
     }

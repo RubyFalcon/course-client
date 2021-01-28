@@ -4,6 +4,9 @@ import { useGlobalContext } from "../Context/Context";
 import { ButtonWrap } from "../components/Card/card.styles";
 import { Link } from "react-router-dom";
 
+/**
+ * the Home page which display 2 separate things depending of if a user is logged in or not
+ */
 const Home = () => {
   const { userData } = useGlobalContext();
 

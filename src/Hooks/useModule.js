@@ -3,9 +3,15 @@ import axios from "axios";
 import { useGlobalContext } from "../Context/Context";
 //upon usingQoute, add that to the context, then get that context in the module page
 
+/**
+ * useModule will pass us  the moduleData and let us setModuleData to the global state
+ * @param {*} moduleCode routes to the api specific module
+ */
 const useModule = (moduleCode) => {
   const { moduleData, setModuleData } = useGlobalContext();
-
+  /**
+   * simple get request to api
+   */
   const getModules = async () => {
     try {
       let result = await axios.get(
@@ -19,10 +25,11 @@ const useModule = (moduleCode) => {
       console.log("something went wrong", err);
     }
   };
-
+  /**
+   * This will get modules every time the moduleCode changes
+   */
   React.useEffect(() => {
     getModules();
-    console.log(moduleData);
   }, [moduleCode]);
 
   return moduleData;

@@ -3,14 +3,21 @@ import { Table, Th, Tbody, Td, Tr, Thead } from "../Table/Table";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+/**
+ * the UserTable is a Table to Display all the users who signed up, it uses useState and getUserData
+ */
 const UserTable = () => {
-  console.log("hi");
-
   const [userData, setUserData] = useState([]);
+  /**
+   * runs on render
+   */
   useEffect(() => {
     getUserData();
   }, []);
 
+  /**
+   * simple get request to API
+   */
   const getUserData = async () => {
     try {
       const response = await axios.get("http://localhost:5000/user/");
