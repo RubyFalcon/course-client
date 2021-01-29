@@ -39,7 +39,7 @@ export default function useSignIn() {
       /**
        * will send use to /modules if and only if we login
        */
-      history.push("/modules");
+      history.push("/");
       success({
         title: "Signed in.",
         description: "You have successfully logged in",
@@ -64,7 +64,7 @@ export default function useSignIn() {
    */
   const onLogout = () => {
     window.localStorage.removeItem("User_Data");
-
+    history.push("/");
     success({
       title: "Signed out.",
       description: "You have successfully logged out",
@@ -72,8 +72,6 @@ export default function useSignIn() {
       duration: 2000,
       isClosable: true,
     });
-
-    history.push("/");
   };
   /**
    * this use will run whenever the page renders and will get theUSer_Data from localstorage and
@@ -94,7 +92,6 @@ export default function useSignIn() {
   React.useEffect(() => {
     if (mounted.current) {
       localStorage.setItem("User_Data", JSON.stringify(userData));
-      //console.log('use effect used')
     } else {
       mounted.current = true;
     }

@@ -3,6 +3,7 @@ import { Table, Th, Tbody, Td, Tr, Thead } from "../Table/Table";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../Context/Context";
+import moment from "moment";
 /**
  * the UserTable is a Table to Display all the users who signed up, it uses useState and getUserData
  */
@@ -50,7 +51,12 @@ const UserTable = () => {
                   <Td>{user.Last_Name}</Td>
                   <Td>{user.ID}</Td>
                   <Td>{user.Address}</Td>
-                  <Td>{user.DOB}</Td>
+                  <Td>
+                    {moment(
+                      user.DOB,
+                      moment.HTML5_FMT.DATETIME_LOCAL_MS
+                    ).format("DD MMM YYYY")}
+                  </Td>
                 </Tr>
               ))}
             </Tbody>
