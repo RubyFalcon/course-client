@@ -46,11 +46,11 @@ const HomeHeader = ({ onAdd, onSignIn }) => {
         >
           <Link href="/">
             <Heading
-              fontStyle="italic"
-              fontFamily="serif"
+              fontStyle="initial"
+              fontFamily="unset"
               as="h2"
-              fontSize="26px"
-              color={useColorModeValue("#0669A5 ", "#02DCFA")}
+              fontSize="32px"
+              color={useColorModeValue("#57585d ", "#fff9e6")}
             >
               Tupay's Module Website
             </Heading>
@@ -59,7 +59,7 @@ const HomeHeader = ({ onAdd, onSignIn }) => {
           <Group>
             <Link href="/about">
               <Heading
-                color="#E2361E"
+                color="#c8b6b5"
                 as="h3"
                 fontSize="18px"
                 paddingRight="5px"
@@ -71,7 +71,7 @@ const HomeHeader = ({ onAdd, onSignIn }) => {
             {userData.First_Name ? (
               <>
                 <Heading
-                  color="#E2361E"
+                  color="#c8b6b5"
                   as={Link}
                   onClick={logout}
                   fontSize="18px"
@@ -94,7 +94,7 @@ const HomeHeader = ({ onAdd, onSignIn }) => {
                   signIn={signin}
                 />
                 <Heading
-                  color="#E2361E"
+                  color="#c8b6b5"
                   onClick={signInOnOpen}
                   as="h3"
                   fontSize="18px"

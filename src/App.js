@@ -11,6 +11,7 @@ import axios from "axios";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp.js";
 import Module from "./pages/Module";
+import About from "./pages/About";
 
 function App() {
   /**
@@ -42,6 +43,9 @@ function App() {
           <SignUp />
         </Route>
         <Route path="/modules/:moduleCode" exact render={() => <Module />} />
+        <Route exact path="/about">
+          <About />
+        </Route>
       </Switch>
     </Router>
   );
