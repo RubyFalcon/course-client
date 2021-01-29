@@ -29,7 +29,6 @@ export default function useSignIn() {
    */
   const postUser = async (userCredentials) => {
     try {
-      console.log("post user has been called");
       let res = await axios.post(
         "http://localhost:5000/user/login",
         userCredentials

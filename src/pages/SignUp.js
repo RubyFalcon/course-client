@@ -39,7 +39,6 @@ const SignUp = () => {
 
   async function handleSubmit(event) {
     let dataReturned = false;
-    console.log(createduser);
     event.preventDefault();
     try {
       const posted = await axios.post(
@@ -48,7 +47,6 @@ const SignUp = () => {
       );
 
       if (posted) {
-        console.log(posted.data);
         dataReturned = true;
       }
     } catch (error) {}

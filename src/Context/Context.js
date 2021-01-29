@@ -55,7 +55,8 @@ const GlobalContextProvider = (props) => {
 };
 
 /**
- * Global context allows data to be passed down to indivual components/pages instead of being passed down through props, and uses createcontext from react
+ * Global context allows data to be passed down to indivual components/pages instead of being passed down through props,
+ * and uses createcontext from react
  */
 export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
